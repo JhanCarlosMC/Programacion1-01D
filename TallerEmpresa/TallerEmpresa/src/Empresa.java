@@ -17,13 +17,16 @@ public class Empresa {
         for (int i = 0; i < empleadosSalarioAlto.length; i++) {
             for (int j = 0; j < empleadosSalarioAlto.length; j++) {
                 if (empleadosSalarioAlto[i].getSalario() < empleadosSalarioAlto[j].getSalario()) {
+                    Empleado auxEmpleado = empleadosSalarioAlto[i];
                     empleadosSalarioAlto[i] = empleadosSalarioAlto[j];
+                    empleadosSalarioAlto[j] = auxEmpleado;
                 }
             }
         }
         return empleadosSalarioAlto;
     }
 
+//Terminar Metodo
     private Empleado[] encontrarListaEmpleadosSinNulos(Empleado[] empleadosSalarioAlto) {
     
     }
