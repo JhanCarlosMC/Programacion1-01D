@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
-      <module fileurl="file://$PROJECT_DIR$/Programacion1-01D.iml" filepath="$PROJECT_DIR$/Programacion1-01D.iml" />
-=======
-      <module fileurl="file://$PROJECT_DIR$/Programacion 1 - 01D.iml" filepath="$PROJECT_DIR$/Programacion 1 - 01D.iml" />
->>>>>>> 0844d6f7ddcf5644d9d0806bcea237131ed57321
+      <module fileurl="file://$PROJECT_DIR$/.idea/Programacion1-01D.iml" filepath="$PROJECT_DIR$/.idea/Programacion1-01D.iml" />
     </modules>
   </component>
 </project>
