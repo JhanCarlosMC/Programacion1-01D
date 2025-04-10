@@ -26,6 +26,77 @@ public class Batallon {
         this.listVehiculos = new LinkedList<>();
     }
 
+    //------------------------------ CRUD Vehiculo Transporte Tropas
+    public boolean agregarVehiculoTransporteTropas(String id, String modelo, int anioFabricacion, double kilometraje, EstadoOperativo estadoOperativo, int capacidadSoldados){
+        boolean flag = true;
+
+        for(VehiculoTransporteTropa vehiculoTransporteTropa : listVehiculosTransporteTropa){
+            if (vehiculoTransporteTropa.getId().equals(id)){
+                flag = false;
+                break;
+            }
+        }
+
+        if (flag){
+            VehiculoTransporteTropa newVehiculoTransporteTropa = new VehiculoTransporteTropa(id,modelo, anioFabricacion,kilometraje, estadoOperativo,capacidadSoldados);
+            listVehiculosTransporteTropa.add(newVehiculoTransporteTropa);
+        }
+
+        return flag;
+    }
+
+    public VehiculoTransporteTropa buscarVehiculoTransporteTropas(String idVehiculoBuscar){
+
+        for (VehiculoTransporteTropa vehiculoTransporteTropa : listVehiculosTransporteTropa) {
+            if (vehiculoTransporteTropa.getId().equals(idVehiculoBuscar)) {
+                return vehiculoTransporteTropa;
+            }
+        }
+
+        return null;
+    }
+
+    public boolean actualizarVehiculoTransporteTropa(String idVehiculoActualizar, String modelo, int anioFabricacion,
+                                                     double kilometraje, EstadoOperativo estadoOperativo, int capacidadSoldados) {
+
+        boolean flag = false;
+
+        for (VehiculoTransporteTropa vehiculoTransporteTropa : listVehiculosTransporteTropa) {
+            if (vehiculoTransporteTropa.getId().equals(idVehiculoActualizar)) {
+
+                vehiculoTransporteTropa.setModelo(modelo);
+                vehiculoTransporteTropa.setAnioFabricacion(anioFabricacion);
+                vehiculoTransporteTropa.setKilometraje(kilometraje);
+                vehiculoTransporteTropa.setEstadoOperativo(estadoOperativo);
+                vehiculoTransporteTropa.setCapacidadSoldados(capacidadSoldados);
+                flag = true;
+                break;
+            }
+        }
+
+        return flag;
+    }
+
+    public boolean eliminarVehiculoTransporteTropa(String idVehiculoEliminar) {
+
+        boolean flag = false;
+
+        for (VehiculoTransporteTropa vehiculoTransporteTropa : listVehiculosTransporteTropa) {
+            if (vehiculoTransporteTropa.getId().equals(idVehiculoEliminar)) {
+
+                listVehiculosTransporteTropa.remove(vehiculoTransporteTropa);
+
+                flag = true;
+                break;
+            }
+        }
+
+        return flag;
+    }
+
+    //------------------------------ CRUD Vehiculo Transporte Tropas
+
+
     public boolean registrarMision(LocalDate fechaMision, String ubicacionMision,
                                    LinkedList listPersonal, String idVehiculomision){
         boolean flag = false;
@@ -39,10 +110,8 @@ public class Batallon {
             if (vehiculo.getId().equals(idVehiculomision)){
                 newMision.setTheVehiculo(vehiculo);
 
-                LinkedList<Mision> listTempo = vehiculo.getListMisiones();
-                listTempo.add(newMision);
+                vehiculo.agregarMision(newMision);
 
-                vehiculo.setListMisiones(listTempo);
                 listMisiones.add(newMision);
                 flag = true;
                 break;
@@ -147,6 +216,8 @@ public class Batallon {
         return vehiculosMisionesCompletadas;
     }
 
+
+    //Getter y Setter
     public String getNombre() {
         return nombre;
     }

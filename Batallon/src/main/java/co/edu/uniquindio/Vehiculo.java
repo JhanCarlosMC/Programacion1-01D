@@ -25,7 +25,11 @@ public abstract class Vehiculo {
 
     public abstract void desplazar();
 
+    public boolean agregarMision(Mision newMision){
+        return listMisiones.add(newMision);
+    }
 
+    //Getter y Setter
     public EstadoOperativo getEstadoOperativo() {
         return estadoOperativo;
     }
